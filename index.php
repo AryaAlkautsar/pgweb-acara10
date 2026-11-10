@@ -61,7 +61,7 @@ $conn->close();
             padding: 15px;
             box-sizing: border-box;
             background: #ffffff;
-            border-right: 2px solid #ddd;
+            border-right: 1px solid #ddd;
         }
 
         .table-header {
@@ -82,25 +82,31 @@ $conn->close();
         .table-container {
             flex-grow: 1;
             overflow-y: auto; /* Scroll hanya aktif di sini */
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
         }
 
+        /* Styling Tabel Sederhana */
         table {
             width: 100%;
             border-collapse: collapse;
+            background-color: #fff;
         }
 
         th, td {
             padding: 8px 10px;
-            border: 1px solid #ddd;
+            border-bottom: 1px solid #e0e0e0;
+            border-right: 1px solid #f0f0f0;
             text-align: left;
-            font-size: 13px;
+            font-size: 12px;
+            color: #333;
         }
 
         th {
-            background-color: #007bff;
-            color: white;
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: bold;
+            border-bottom: 2px solid #ccc;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -111,12 +117,12 @@ $conn->close();
             text-align: center;
         }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        tr:hover {
+            background-color: #f8f9fa;
         }
 
         .btn-input {
-            padding: 6px 10px;
+            padding: 6px 12px;
             background: #28a745;
             color: white;
             text-decoration: none;
@@ -128,47 +134,6 @@ $conn->close();
 
         .btn-input:hover {
             background: #218838;
-        }
-
-        /* Styling Tombol Aksi */
-        .btn-action {
-            display: inline-block;
-            padding: 4px 8px;
-            font-size: 11px;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 3px;
-            transition: background 0.2s;
-        }
-
-        .btn-edit {
-            background-color: #e7f3fe;
-            color: #007bff;
-            border: 1px solid #b3d7ff;
-        }
-
-        .btn-edit:hover {
-            background-color: #007bff;
-            color: white;
-        }
-
-        .btn-hapus {
-            background-color: #fde8e8;
-            color: #dc3545;
-            border: 1px solid #f5c6cb;
-        }
-
-        .btn-hapus:hover {
-            background-color: #dc3545;
-            color: white;
-        }
-
-        /* Pembatas antar tombol aksi */
-        .action-divider {
-            display: inline-block;
-            margin: 0 4px;
-            color: #ccc;
-            font-weight: bold;
         }
 
         /* Bagian Kanan: Panel Peta (Lebar 58%) */
@@ -240,9 +205,8 @@ $conn->close();
                         <td>".$row["LATITUDE"]."</td>
                         <td>".$row["LONGITUDE"]."</td>
                         <td class='td-aksi' style='white-space: nowrap;'>
-                            <a href='edit/index.php?id=".$row["OBJECID"]."' class='btn-action btn-edit'>Edit</a>
-                            <span class='action-divider'>|</span>
-                            <a href='delete.php?id=".$row["OBJECID"]."' class='btn-action btn-hapus' onclick='return confirm(\"Yakin ingin menghapus data ini?\")'>Hapus</a>
+                            <a href='edit/index.php?id=".$row["OBJECID"]."'>edit</a> | 
+                            <a href='delete.php?id=".$row["OBJECID"]."' onclick='return confirm(\"Yakin ingin menghapus data ini?\")'>hapus</a>
                         </td>
                         </tr>";
                         $no++;
